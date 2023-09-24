@@ -29,8 +29,9 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
   @override
   void initState() {
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network(widget.url)
-        ..setLooping(true),
+      videoPlayerController:
+          VideoPlayerController.networkUrl(Uri.parse(widget.url))
+            ..setLooping(true),
       autoPlay: false,
     );
     widget.flickMultiManager.init(flickManager);
@@ -48,8 +49,8 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
   Widget build(BuildContext context) {
     return VisibilityDetector(
       key: ObjectKey(flickManager),
-      onVisibilityChanged: (visiblityInfo) {
-        if (visiblityInfo.visibleFraction > 0.9) {
+      onVisibilityChanged: (visibilityInfo) {
+        if (visibilityInfo.visibleFraction > 0.9) {
           widget.flickMultiManager.play(flickManager);
         }
       },

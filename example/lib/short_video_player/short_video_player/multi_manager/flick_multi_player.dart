@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flick_video_player/flick_video_player.dart';
 
 import 'package:flutter/material.dart';
@@ -50,8 +49,8 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
   Widget build(BuildContext context) {
     return VisibilityDetector(
       key: ObjectKey(flickManager),
-      onVisibilityChanged: (visiblityInfo) {
-        if (visiblityInfo.visibleFraction > 0.9) {
+      onVisibilityChanged: (visibilityInfo) {
+        if (visibilityInfo.visibleFraction > 0.9) {
           widget.flickMultiManager.play(flickManager);
         }
       },
